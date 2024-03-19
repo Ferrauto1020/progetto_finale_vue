@@ -3,9 +3,7 @@ import CharacterComponent from './components/CharacterComponent.vue'
 </script>
 
 <template>
-  <Suspense>
-    <CharacterComponent />
-  </Suspense>
+  <CharacterComponent />
 </template>
 
 <style scoped></style>
