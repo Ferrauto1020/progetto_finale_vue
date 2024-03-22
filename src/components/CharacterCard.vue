@@ -10,33 +10,41 @@ defineProps({
 </script>
 
 <template>
-  <div class="container">
-    <div class="containerInfo">
-      <img :src="img" alt="404" />
-    </div>
-    <div class="containerInfo">
-      <h1>{{ name }}</h1>
-      <h2 v-if="status == 'unknown'">⚪{{ status }} - {{ race }}</h2>
-      <h2 v-if="status == 'Alive'">🟢{{ status }} - {{ race }}</h2>
-      <h2 v-if="status == 'Dead'">🔴{{ status }} - {{ race }}</h2>
-      <p>last know location:</p>
-      <p>{{ location }}</p>
-      <p>First seen in:</p>
-      <p>
-        {{ firAp }}
-      </p>
+  <div class="divider">
+    <div class="container">
+      <div class="containerInfo">
+        <img :src="img" alt="404" />
+      </div>
+      <div class="containerInfo">
+        <h1>{{ name }}</h1>
+        <h2 v-if="status == 'unknown'">⚪{{ status }} - {{ race }}</h2>
+        <h2 v-if="status == 'Alive'">🟢{{ status }} - {{ race }}</h2>
+        <h2 v-if="status == 'Dead'">🔴{{ status }} - {{ race }}</h2>
+        <p>last know location:</p>
+        <p>{{ location }}</p>
+        <p>First seen in:</p>
+        <p>
+          {{ firAp }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
 <style scoped lang="scss">
+.divider {
+  padding: 15px 16px;
+}
 .container {
   display: flex;
   flex-direction: row;
   color: white;
+  width: 700px;
+  height: 325px;
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   background: rgb(60, 62, 68);
+  padding: 10px 15px;
 }
 .containerInfo {
   padding: 2px 16px;

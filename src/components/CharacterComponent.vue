@@ -3,7 +3,8 @@ import CharacterCard from './CharacterCard.vue'
 import type { Character } from '@/models/characters'
 import { onMounted, ref, watch } from 'vue'
 import axios from 'axios'
-const page = ref(1)
+import { page } from '../utils/page'
+//const page = ref(1)
 const characters = ref<Character[]>([])
 const verifyPage = ref(42)
 const loadData = () => {
@@ -32,14 +33,9 @@ watch(page, () => {
 })
 </script>
 <template>
+  
   <div>
-    <div class="c_page">
-      <button :disabled="page <= 0" @click="page--">◄</button>
-      <p>{{ page }}</p>
-      <button :disabled="page >= 42" @click="page++">►</button>
-      <input type="number" v-model="page" />
-    </div>
-    <div v-if="!err">
+    <div v-if="!err" class="container">
       <CharacterCard
         v-for="(Character, index) in characters"
         :key="index"
