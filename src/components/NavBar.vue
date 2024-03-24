@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { page } from '@/utils/page'
+import { verifyPage } from '@/utils/verifyPage'
 </script>
 <template>
   <ul>
@@ -7,7 +8,7 @@ import { page } from '@/utils/page'
     <li>
       {{ page }}
     </li>
-    <li><button @click="page++" :disabled="page >= 42">►</button></li>
+    <li><button @click="page++" :disabled="page >= verifyPage">►</button></li>
     <li><input type="number" v-model="page" /></li>
     <li><button @click="page = 0">HOME</button></li>
   </ul>
@@ -47,5 +48,13 @@ li a:hover {
 }
 .active {
   background-color: #04aa6d;
+}
+button {
+  width: 50px;
+  height: 25px;
+}
+input {
+  width: 40px;
+  height: 25px;
 }
 </style>

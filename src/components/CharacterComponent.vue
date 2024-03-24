@@ -4,9 +4,9 @@ import type { Character } from '@/models/characters'
 import { onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 import { page } from '../utils/page'
+import { verifyPage } from '@/utils/verifyPage'
 //const page = ref(1)
 const characters = ref<Character[]>([])
-const verifyPage = ref(42)
 const loadData = () => {
   axios
     .get(`https://rickandmortyapi.com/api/character?page=${page.value}`)
@@ -33,9 +33,8 @@ watch(page, () => {
 })
 </script>
 <template>
-  
   <div>
-    <div v-if="!err" class="container">
+    <div v-if="!err">
       <CharacterCard
         v-for="(Character, index) in characters"
         :key="index"
@@ -50,16 +49,5 @@ watch(page, () => {
   </div>
 </template>
 <style scoped lang="scss">
-.c_page {
-  display: flex;
-  flex-direction: row;
-}
-button {
-  width: 50px;
-  height: 25px;
-}
-input {
-  width: 40px;
-  height: 25px;
-}
+
 </style>
