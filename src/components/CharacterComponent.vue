@@ -7,6 +7,7 @@ import { page } from '../utils/page'
 import { verifyPage } from '@/utils/verifyPage'
 //const page = ref(1)
 const characters = ref<Character[]>([])
+const error = ref(null)
 const loadData = () => {
   axios
     .get(`https://rickandmortyapi.com/api/character?page=${page.value}`)
@@ -14,14 +15,14 @@ const loadData = () => {
       characters.value = response.data.results
       verifyPage.value = response.data.info.pages
     })
-    .catch((err) => err)
+    .catch((err) => (error.value = err.value))
 }
 const loadNameEp = (link: string) => {
   const name = ref('')
   axios
     .get(link)
     .then((response) => (name.value = response.data.name))
-    .catch((error) => error)
+    .catch((err) => err)
   return name
 }
 onMounted(() => {
@@ -34,7 +35,7 @@ watch(page, () => {
 </script>
 <template>
   <div>
-    <div v-if="!err">
+    <div v-if="!error">
       <CharacterCard
         v-for="(Character, index) in characters"
         :key="index"
@@ -48,6 +49,4 @@ watch(page, () => {
     </div>
   </div>
 </template>
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
