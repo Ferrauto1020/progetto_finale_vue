@@ -10,7 +10,9 @@ import { verifyPage } from '@/utils/verifyPage'
     </li>
     <li><button @click="page++" :disabled="page >= verifyPage">►</button></li>
     <li><input type="number" v-model="page" /></li>
-    <li><button @click="page = 0">HOME</button></li>
+    <li><RouterLink to="/">See Character</RouterLink></li>
+    <li><RouterLink to="/episode/">See Episode</RouterLink></li>
+    <li><button @click="page = 0">page 1</button></li>
   </ul>
 </template>
 <style scoped lang="scss">

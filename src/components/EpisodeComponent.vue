@@ -6,6 +6,7 @@ import axios from 'axios'
 import { verifyPage } from '../utils/verifyPage'
 import { page } from '../utils/page'
 const episodes = ref<Episode[]>([])
+const error = ref(null)
 const loadData = () => {
   axios
     .get(`https://rickandmortyapi.com/api/episode?page=${page.value}`)
@@ -13,7 +14,7 @@ const loadData = () => {
       episodes.value = response.data.results
       verifyPage.value = response.data.info.pages
     })
-    .catch((err) => err)
+    .catch((err) => (error.value = err.value))
 }
 
 const getBySingleLink = (link: string) => {
@@ -39,7 +40,7 @@ watch(page, () => {
 </script>
 <template>
   <div>
-    <div v-if="!err">
+    <div v-if="!error">
       <EpisodeCard
         v-for="(episode, index) in episodes"
         :key="index"

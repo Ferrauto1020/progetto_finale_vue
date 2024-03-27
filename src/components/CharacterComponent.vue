@@ -23,7 +23,7 @@ const loadNameEp = (link: string) => {
     .get(link)
     .then((response) => (name.value = response.data.name))
     .catch((err) => err)
-  return name
+  return name 
 }
 onMounted(() => {
   loadData()
